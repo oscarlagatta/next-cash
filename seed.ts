@@ -54,7 +54,7 @@ const categoriesSeedData: (typeof categoriesTable.$inferInsert) [] = [
         type: "expense",
     },
 ];
-;
+
 
 async function main() {
     await db.insert(categoriesTable).values(categoriesSeedData);

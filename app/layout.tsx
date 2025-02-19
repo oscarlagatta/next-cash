@@ -38,7 +38,7 @@ export default function RootLayout({
                   <SignedOut>
                       <div className="flex items-center gap-4">
                           <Button asChild variant='link' className='text-white'>
-                              <SignInButton />
+                              <SignInButton/>
                           </Button>
                           <Button asChild variant='link' className='text-white'>
                               <SignUpButton />
