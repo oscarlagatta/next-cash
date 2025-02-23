@@ -76,7 +76,7 @@ export default async function TransactionsPage({searchParams}: { searchParams: P
                     {!transactions?.length && (
                         <p className='text-center py-10 text-lg text-muted-foreground'>There are no transactions for this month</p>
                     )}
-                    {!!transactions?.length && <Table className='mt-4'>
+                    {!!transactions?.length && (<Table className='mt-4'>
                         <TableHeader>
                             <TableRow>
                                 <TableHead>
@@ -130,7 +130,7 @@ export default async function TransactionsPage({searchParams}: { searchParams: P
                                 ))
                             }
                         </TableBody>
-                    </Table>}
+                    </Table>)}
                 </CardContent>
             </Card>
 

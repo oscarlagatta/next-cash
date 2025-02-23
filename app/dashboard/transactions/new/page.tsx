@@ -13,7 +13,7 @@ import NewTransactionForm from "@/app/dashboard/transactions/new/new-transaction
 export default async function NewTransactionPage() {
 
     const categories = await getCategories();
-    console.log('categories:: ', categories)
+
 
     return (
         <div className='max-w-screen-xl mx-auto py-10'>
