@@ -11,6 +11,7 @@ import {getCategories} from "@/data/getCategories";
 import EditTransactionForm from "@/app/dashboard/transactions/[transactionId]/edit-transaction-form";
 import {getTransaction} from "@/data/getTransaction";
 import {notFound} from "next/navigation";
+import DeleteTransactionDialog from "@/app/dashboard/transactions/[transactionId]/delete-transaction-dialog";
 
 export default async function EditTransactionPage(
     {params}: {params: Promise<{transactionId: string}>}) {
@@ -32,38 +33,19 @@ export default async function EditTransactionPage(
     }
 
     return (
-        <div className='max-w-screen-xl mx-auto py-10'>
-            <Breadcrumb>
-                <BreadcrumbList>
-                    <BreadcrumbItem>
-                        <BreadcrumbLink asChild>
-                            <Link href='/dashboard'>Dashboard</Link>
-                        </BreadcrumbLink>
-                    </BreadcrumbItem>
-                    <BreadcrumbSeparator/>
-                    <BreadcrumbItem>
-                        <BreadcrumbLink asChild>
-                            <Link href='/dashboard/transactions'>Transactions</Link>
-                        </BreadcrumbLink>
-                    </BreadcrumbItem>
-                    <BreadcrumbSeparator/>
-                    <BreadcrumbItem>
-                        <BreadcrumbPage>
-                            Edit Transaction
-                        </BreadcrumbPage>
-                    </BreadcrumbItem>
-                </BreadcrumbList>
-            </Breadcrumb>
+
+
             <Card className='mt-4 max-w-screen-md'>
                 <CardHeader>
-                    <CardTitle>
-                        Edit Transaction
+                    <CardTitle className="flex justify-between">
+                        <span >Edit Transaction</span>
+                        <DeleteTransactionDialog transactionId={transaction.id} transactionDate={transaction.transactionDate} />
                     </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <EditTransactionForm transaction={transaction} categories={categories} />
                 </CardContent>
             </Card>
-        </div>
+
     )
 }

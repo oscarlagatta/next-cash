@@ -5,6 +5,8 @@ import {useRouter} from "next/navigation";
 import {useToast} from "@/hooks/use-toast";
 import {z} from "zod";
 import TransactionForm, {transactionFormSchema} from "@/components/transaction-form";
+import {updateTransaction} from "@/app/dashboard/transactions/[transactionId]/actions";
+import {format} from "date-fns";
 
 
 export default function EditTransactionForm({ categories, transaction}: { categories: Category[], transaction: {
@@ -19,10 +21,16 @@ export default function EditTransactionForm({ categories, transaction}: { catego
     const {toast} = useToast();
 
     const handleSubmit = async (data: z.infer<typeof transactionFormSchema>) => {
-        // nextjs server action
-        const result:any = {}
 
-        if (result.error) {
+        const result = await updateTransaction({
+            id: transaction.id,
+            amount: data.amount,
+            description: data.description,
+            categoryId: data.categoryId,
+            transactionDate: format(data.transactionDate, "yyyy-MM-dd")
+        });
+
+        if (result?.error) {
             toast({
                 title: "Error",
                 description: result.message,
@@ -38,9 +46,6 @@ export default function EditTransactionForm({ categories, transaction}: { catego
         });
 
         router.push(`/dashboard/transactions?${data.transactionDate.getMonth() + 1}&year=${data.transactionDate.getFullYear()}`);
-
-        console.log(result.id);
-
     }
     return (
         <TransactionForm defaultValues={{
