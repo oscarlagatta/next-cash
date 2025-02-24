@@ -35,7 +35,7 @@ export const createTransaction = async (data: {
         userId,
         amount: data.amount.toString(),
         description: data.description,
-        categoryId: data.categoryId.toString(),
+        categoryId: data.categoryId,
         transactionDate: data.transactionDate,
     }).returning();
 
