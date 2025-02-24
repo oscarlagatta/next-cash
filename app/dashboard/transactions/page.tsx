@@ -13,7 +13,7 @@ import {z} from "zod";
 import {format} from "date-fns";
 import {getTransactionsByMonth} from "@/data/getTransactionsByMonth";
 import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow} from "@/components/ui/table";
-import {Filter, PencilIcon} from "lucide-react";
+import {PencilIcon} from "lucide-react";
 import numeral from 'numeral';
 import {Badge} from "@/components/ui/badge";
 import Filters from "@/app/dashboard/transactions/filters";
